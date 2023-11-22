@@ -3,7 +3,7 @@
 // in the html.
 
 var timeRef = '';
-timeRef = dayjs().format('H')
+timeRef = parseInt(dayjs().format('H'))
 console.log(timeRef);
 
 $(function () {
@@ -20,7 +20,6 @@ $(function () {
     // get nearby values
       var value = $(this).siblings('.description').val();
       var time = $(this).parent().attr('id');
-      clock();
       // save in localStorage
       localStorage.setItem(time, value);
   
@@ -38,12 +37,27 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 var i = '';
-  var divID = 'hour-' + i;
+  
   console.log(divID);
   var hourLog = document.getElementById(divID);
+  var divEl = $('<textarea>').parent();
 
-for ( i =9; hourLog; i++) {
-  if ()
+for ( i = 9; i < 18; i++) {
+  var divID = '#hour-' + i;
+  console.log(timeRef, i)
+  if (i < timeRef) {
+    $(divID).addClass('past')
+    console.log(i)
+    console.log(timeRef);
+  } else if (i === timeRef) {
+    $(divID).addClass('present')
+
+  } else {
+    $(divID).addClass('future')
+  }
+
+  $(divID + ' .description').val(localStorage.getItem('hour-' + i));
+
 }
 
 
@@ -68,10 +82,11 @@ for ( i =9; hourLog; i++) {
 });
 
 
-setInterval (function clock() {
+setInterval (function() {
 
   var currentTime = dayjs().format('MMMM D, YYYY')
   console.log(currentTime);
   // set content to the top of page
+  $('#currentDay').text(currentTime);
 
-}, 30000);
+}, 1000);
