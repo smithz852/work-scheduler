@@ -32,7 +32,14 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+var i = '';
+  var divID = 'hour-' + i;
+  console.log(divID);
+  var hourLog = document.getElementById(divID);
 
+for ( i =9; hourLog; i++) {
+  if ()
+}
 
 
 
