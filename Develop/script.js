@@ -11,10 +11,16 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-$('button').on('click', function() {
-  var words = $('button').parent().children('textarea').val();
-  console.log(words);
-})
+  $('button').on('click', function() {
+    // get nearby values
+      var value = $(this).siblings('.description').val();
+      var time = $(this).parent().attr('id');
+  
+      // save in localStorage
+      localStorage.setItem(time, value);
+  
+   
+  })
 
 
 
