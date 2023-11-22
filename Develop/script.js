@@ -1,6 +1,11 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+var timeRef = '';
+timeRef = dayjs().format('H')
+console.log(timeRef);
+
 $(function () {
 
   // var textArea = $('textarea');
@@ -15,7 +20,7 @@ $(function () {
     // get nearby values
       var value = $(this).siblings('.description').val();
       var time = $(this).parent().attr('id');
-  
+      clock();
       // save in localStorage
       localStorage.setItem(time, value);
   
@@ -32,7 +37,9 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-
+   function scheduleColor() {
+    
+   }
 
 
 
@@ -48,8 +55,18 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 
-
+   
   
+   
 
   
 });
+
+
+setInterval (function clock() {
+
+  var currentTime = dayjs().format('MMMM D, YYYY')
+  console.log(currentTime);
+  // set content to the top of page
+
+}, 30000);
